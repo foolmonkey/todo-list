@@ -6,11 +6,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: ["test", "test2", "test3", "test4"],
+      tasks: ["Edit this task!"],
     };
 
     this.deleteTask = this.deleteTask.bind(this);
     this.addTask = this.addTask.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   deleteTask(key) {
@@ -27,10 +28,9 @@ class App extends React.Component {
     this.setState({ tasks: items });
   }
 
-  handleInput(key, value) {
+  handleInput(key, event) {
     let items = this.state.tasks;
-    items[key] = value;
-
+    items[key] = event.target.value;
     this.setState({ tasks: items });
   }
 

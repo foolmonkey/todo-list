@@ -11,9 +11,7 @@ class Task extends React.Component {
         <input className="complete" type="checkbox"></input>
         <input
           type="text"
-          onChange={(event) =>
-            this.props.handleInput(this.props.id, event.target.value)
-          }
+          onChange={(e) => this.props.handleInput(this.props.id, e)}
           value={this.props.value}
         ></input>
 
