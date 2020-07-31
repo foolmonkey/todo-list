@@ -20,6 +20,10 @@
   margin: 53px 0px 0px -15px;
 }
 
+.doneoffset::after {
+  margin: 38px 0px 0px -15px;
+}
+
 #bar {
   background-color: rgb(187, 75, 75);
 }
@@ -65,4 +69,17 @@ input {
   outline: none;
   font-size: 14px;
   margin: 0 5px 0 5px;
+}
+
+#completed h2 {
+  margin: 0;
+  padding: 18px 0px 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  background-color: indianred;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }

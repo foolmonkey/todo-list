@@ -12,6 +12,7 @@ class Tasklist extends React.Component {
         handleInput={this.props.handleInput}
         deleteTask={this.props.deleteTask}
         handleKeyDown={this.props.handleKeyDown}
+        completeTask={this.props.completeTask}
       ></Task>
     ));
   }

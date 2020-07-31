@@ -4,7 +4,13 @@ class Task extends React.Component {
   render() {
     return (
       <div className="box new">
-        <input className="complete" type="checkbox"></input>
+        <input
+          className="complete"
+          type="checkbox"
+          onClick={(e) =>
+            this.props.completeTask(this.props.id, this.props.value, e)
+          }
+        ></input>
         <input
           type="text"
           onChange={(e) => this.props.handleInput(this.props.id, e)}

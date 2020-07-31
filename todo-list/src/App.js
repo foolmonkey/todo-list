@@ -1,5 +1,6 @@
 import React from "react";
 import Tasklist from "./Tasklist";
+import CompletedList from "./CompletedList";
 import Add from "./Add";
 
 class App extends React.Component {
@@ -14,6 +15,8 @@ class App extends React.Component {
     this.addTask = this.addTask.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.completeTask = this.completeTask.bind(this);
+    this.uncompleteTask = this.uncompleteTask.bind(this);
   }
 
   // deletes the task with the specified key
@@ -54,6 +57,31 @@ class App extends React.Component {
     }
   }
 
+  completeTask(key, value, event) {
+    event.preventDefault();
+
+    let items = this.state.completed;
+    items.push(value);
+
+    this.setState({ completed: items });
+
+    // remove from tasks
+    this.deleteTask(key);
+  }
+
+  uncompleteTask(key, value) {
+    let items = this.state.tasks;
+    items.push(value);
+
+    this.setState({ tasks: items });
+
+    // remove from completed tasks
+    let removed = this.state.completed;
+    removed.splice(key, 1);
+
+    this.setState({ completed: removed });
+  }
+
   render() {
     return (
       <div className="App">
@@ -63,7 +91,18 @@ class App extends React.Component {
           deleteTask={this.deleteTask}
           handleInput={this.handleInput}
           handleKeyDown={this.handleKeyDown}
+          completeTask={this.completeTask}
         ></Tasklist>
+
+        {this.state.completed.length > 0 && (
+          <div id="completed">
+            <h2>Completed Tasks</h2>
+            <CompletedList
+              tasks={this.state.completed}
+              uncompleteTask={this.uncompleteTask}
+            ></CompletedList>
+          </div>
+        )}
       </div>
     );
   }
