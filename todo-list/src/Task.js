@@ -1,10 +1,6 @@
 import React from "react";
 
 class Task extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="box new">
@@ -12,6 +8,9 @@ class Task extends React.Component {
         <input
           type="text"
           onChange={(e) => this.props.handleInput(this.props.id, e)}
+          onKeyDown={(e) =>
+            this.props.handleKeyDown(this.props.id, this.props.value, e)
+          }
           value={this.props.value}
         ></input>
 

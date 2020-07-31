@@ -1,11 +1,8 @@
 import React from "react";
 import Task from "./Task";
 
+// display tasks from props
 class Tasklist extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return this.props.tasks.map((task, i) => (
       <Task
@@ -14,6 +11,7 @@ class Tasklist extends React.Component {
         value={task}
         handleInput={this.props.handleInput}
         deleteTask={this.props.deleteTask}
+        handleKeyDown={this.props.handleKeyDown}
       ></Task>
     ));
   }
