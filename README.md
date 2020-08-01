@@ -1,7 +1,9 @@
 # todo-list
 A basic online To-Do List created with React. Its design is based on Google Tasks.
 
-To get started, delete the first task, or edit it!
+Live-version available at: https://foolmonkey.github.io/todo-list/
+
+To get started, delete or edit the first task!
 
 To add a task, you can:
   -Click the 'Add a task' button
