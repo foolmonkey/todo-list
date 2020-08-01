@@ -25,6 +25,10 @@ class App extends React.Component {
     items.splice(key, 1);
 
     this.setState({ tasks: items });
+
+    if (this.state.tasks.length < 1) {
+      this.setState({ tasks: [""] });
+    }
   }
 
   // add an empty task to the end of the list
@@ -57,18 +61,22 @@ class App extends React.Component {
     }
   }
 
+  // Moves task to 'Completed Tasks'
   completeTask(key, value, event) {
     event.preventDefault();
 
-    let items = this.state.completed;
-    items.push(value);
+    if (value != "") {
+      let items = this.state.completed;
+      items.push(value);
 
-    this.setState({ completed: items });
+      this.setState({ completed: items });
 
-    // remove from tasks
-    this.deleteTask(key);
+      // remove from tasks
+      this.deleteTask(key);
+    }
   }
 
+  // Moves task from 'Completed Tasks' to normal task list
   uncompleteTask(key, value) {
     let items = this.state.tasks;
     items.push(value);
@@ -96,7 +104,17 @@ class App extends React.Component {
 
         {this.state.completed.length > 0 && (
           <div id="completed">
-            <h2>Completed Tasks</h2>
+            <div className="box" id="bar">
+              <h2>Completed Tasks</h2>
+              <button
+                id="clear"
+                onClick={() => {
+                  this.setState({ completed: [] });
+                }}
+              >
+                Clear
+              </button>
+            </div>
             <CompletedList
               tasks={this.state.completed}
               uncompleteTask={this.uncompleteTask}

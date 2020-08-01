@@ -7,9 +7,6 @@ class Add extends React.Component {
         <button id="create" onClick={this.props.addTask}>
           Add a task
         </button>
-        {
-          //<button>Options</button>}
-        }
       </div>
     );
   }
