@@ -65,7 +65,7 @@ class App extends React.Component {
   completeTask(key, value, event) {
     event.preventDefault();
 
-    if (value != "") {
+    if (value !== "") {
       let items = this.state.completed;
       items.push(value);
 
